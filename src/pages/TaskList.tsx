@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { AddTask } from '../components/AddTask'
 
-export const TaskList = () => {
+export const TaskList: React.FC = () => {
     const [newTask, setNewTask] = useState('')
     const [tasks, setTasks] = useState([])
 
@@ -10,7 +10,9 @@ export const TaskList = () => {
         setNewTask('')
     }
     const handleDeleteTask = () => {
-        setTasks(prevTasks => [...prevTasks])
+        setTasks(prevTasks => prevTasks.filter((_, index) => {
+            return index
+        }))
     }
   return (
     <div className="flex flex-col items-center">

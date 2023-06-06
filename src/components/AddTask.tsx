@@ -1,6 +1,11 @@
-import React from 'react'
+import React, {ChangeEvent, FC} from 'react'
+import { AddTaskProps } from '../types/taskTypes'
 
-export const AddTask = ({newTask, handleAddTask, setNewTask}) => {
+export const AddTask: FC<AddTaskProps> = ({newTask, handleAddTask, setNewTask}) => {
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setNewTask(event.target.value)
+  }
 
   return (
     <div>
@@ -9,7 +14,7 @@ export const AddTask = ({newTask, handleAddTask, setNewTask}) => {
             <input
                 name="task"
                 type="text" 
-                onChange={(e) => setNewTask(e.target.value)}
+                onChange={handleChange}
                 value={newTask}
                 className="border-4 border-blue-950 bg-blue-500 rounded-lg m-2 p-1 text-white"
             >
